@@ -1,0 +1,21 @@
+.calendar-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-cell{
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.week{
+    color: #0f0e0e;
+}
+
+.week-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
