@@ -16,7 +16,7 @@ import "./Dates.css";
 // ]
 
 const Dates = ({ activeDate, selectedDate, setSelectedDate ,onLeftbar}) => {
-  
+
   const [currentWeekDates, setCurrentWeekDates] = useState([]);
 
   const today = format(new Date(), "d");
@@ -56,7 +56,7 @@ const Dates = ({ activeDate, selectedDate, setSelectedDate ,onLeftbar}) => {
   
   return (
     <div className="dates-container">
-      {/* className={`${onLeftbar ===true? 'week':'week-left'}`} */}
+    
       {currentWeekDates.map((week, index) => (
         <div key={index} className="week" >
           {week.map((date, idx) => {
@@ -74,13 +74,12 @@ const Dates = ({ activeDate, selectedDate, setSelectedDate ,onLeftbar}) => {
             return(
             <div
               key={idx}
-              className={`${onLeftbar ===false? 'week-cell':'week-cell-left'}  ${isCurrentMonth ? "text-black" : "text-gray"}`}
+              className={`${onLeftbar ===false? 'week-cell':'week-cell-left'}  ${isCurrentMonth ? "text-black" : "text-gray"} `}
               onClick={() => setSelectedDate(date)}
             >
-              <span className={`${date === today ? "today" : ""} `}>
+              <span className={`${date === today ? "today" : ""}`}>
                 {date}
               </span>
-              {/* {date} */}
             {/* {
               date === '1' ? `${format(startOfMonth(activeDateNum),"MMM")} ${date}`:date
             } */}

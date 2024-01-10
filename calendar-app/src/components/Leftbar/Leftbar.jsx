@@ -6,7 +6,7 @@ import Event from '../Event/Event'
 
 const Leftbar = ({ activeDate, selectedDate, setSelectedDate }) => {
 
-  console.log(selectedDate)
+  // console.log(selectedDate)
 
   const [showEvent,setShowEvent]=useState(false)
 
