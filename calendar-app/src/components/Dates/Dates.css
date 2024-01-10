@@ -1,7 +1,6 @@
 .week-container{
     display: grid;
-    grid-template-columns: repeat(7,1fr);
-    
+    grid-template-columns: repeat(7,1fr); 
 }
 .day{
     display: flex;
@@ -24,19 +23,33 @@
     display: grid;
     grid-template-columns: repeat(7,1fr);
 }
+.week-left{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    width: 300px;
+}
 .week-cell{
     width: 150px;
     height: 150px;
-    /* background-color: aqua; */
-    /* margin-bottom: 5px; */
     border: 0.8px solid lightgray;
+    padding-top: 5px;
 }
-
+.week-cell-left{
+    /* background-color: red; */
+    margin-top:8px
+}
 .today{
     background-color: rgb(22, 94, 249);
     border-radius: 50px;
-    color:#fff;
+    color:#fff !important;
     width: 30px;
     height: 30px;
-    margin:5px auto;
+    /* margin:15px auto; */
+    padding: 5px 6px;
+}
+.text-gray{
+    color:gray
+}
+.text-black{
+    color:black;
 }

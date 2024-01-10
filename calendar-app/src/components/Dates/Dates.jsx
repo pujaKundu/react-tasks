@@ -5,22 +5,21 @@ import {
   addDays,
   startOfMonth,
   endOfMonth,
-  endOfWeek,
+  endOfWeek,isFirstDayOfMonth,isToday,getMonth,getDate,isSameMonth
 } from "date-fns";
 import "./Dates.css";
 
 // list of months
 
-const allMonths = [
-  "Jan","Feb","Mar","Apr","May","Jun","Jul","Sep","Oct","Nov","Dec"
-]
+// const allMonths = [
+//   "Jan","Feb","Mar","Apr","May","Jun","Jul","Sep","Oct","Nov","Dec"
+// ]
 
-const Dates = ({ activeDate, selectedDate, setSelectedDate }) => {
+const Dates = ({ activeDate, selectedDate, setSelectedDate ,onLeftbar,setOnLeftbar,weekDays}) => {
   console.log(activeDate)
   const [currentWeekDates, setCurrentWeekDates] = useState([]);
 
   const today = format(new Date(), "d");
-
 
   useEffect(() => {
     // days of a week
@@ -53,22 +52,30 @@ const Dates = ({ activeDate, selectedDate, setSelectedDate }) => {
     setCurrentWeekDates(allWeeks);
   }, [activeDate]);
 
-
+  const isFirstDay = isFirstDayOfMonth(activeDate);
+  
   return (
     <div className="dates-container">
+      {/* className={`${onLeftbar ===true? 'week':'week-left'}`} */}
       {currentWeekDates.map((week, index) => (
-        <div key={index} className="week">
+        <div key={index} className="week" >
           {week.map((date, idx) => {
-            console.log(format(startOfMonth(selectedDate),"MMM"))
+            console.log("is same month ",isSameMonth(date,activeDate))
+            console.log(`ac ${format(activeDate,'d')}, curr ${date}, today ${today}`)
+            const activeDateNum = format(activeDate,'d')
             return(
             <div
               key={idx}
-              className={`week-cell ${date === today ? "today" : ""}`}
+              className={`${onLeftbar ===false? 'week-cell':'week-cell-left'}  ${isSameMonth(today,activeDateNum)?'text-black':'text-gray'}`}
               onClick={() => setSelectedDate(date)}
             >
-            {
-              date === '1' ? `${format(startOfMonth(selectedDate),"MMM")} ${date}`:date
-            }
+              <span className={`${date === today ? "today" : ""}`}>
+                {date}
+              </span>
+              {/* {date} */}
+            {/* {
+              date === '1' ? `${format(startOfMonth(activeDateNum),"MMM")} ${date}`:date
+            } */}
             </div>
           )})}
         </div>

@@ -4,7 +4,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { FaSearch } from "react-icons/fa";
 import { FaRegQuestionCircle } from "react-icons/fa";
 import { FaRegCalendarAlt } from "react-icons/fa";
-import { IoSettings } from "react-icons/io5";
+import { IoSettingsOutline } from "react-icons/io5";
 import { FaTasks } from "react-icons/fa";
 import { CgMenuGridO } from "react-icons/cg";
 import { format} from "date-fns";
@@ -17,7 +17,7 @@ const Topbar = ({ activeDate ,handlePrevMonth,handleNextMonth}) => {
   return (
     <div className="topbar">
       <div className="leftmenu">
-        <RxHamburgerMenu className="topbar-icon" />
+        <RxHamburgerMenu className="topbar-icon menu-icon" />
 
         <img src={logo} alt="logo" className="logo" />
         <span>Calendar</span>
@@ -31,18 +31,18 @@ const Topbar = ({ activeDate ,handlePrevMonth,handleNextMonth}) => {
       </div>
 
       <div className="rightmenu">
-        <FaSearch className="right-icon" />
-        <FaRegQuestionCircle className="right-icon" />
-        <IoSettings className="right-icon" />
-        <select name="" id="" className="select">
+        <FaSearch className="right-icon icon" />
+        <FaRegQuestionCircle className="right-icon icon" />
+        <IoSettingsOutline className="right-icon icon" />
+        <select name="" id="" className="select icon">
           <option value="Month">Month</option>
           <option value="Month">Week</option>
         </select>
         <div className="icon-container">
-          <FaRegCalendarAlt className="icon" />
+          <FaRegCalendarAlt className="icon calendar-icon" />
           <FaTasks className="icon" />
         </div>
-        <CgMenuGridO className="icon" />
+        <CgMenuGridO className="icon menu-icon" />
       </div>
     </div>
   );

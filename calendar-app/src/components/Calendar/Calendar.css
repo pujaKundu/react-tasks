@@ -15,7 +15,6 @@
 }
 
 .week-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
 }
