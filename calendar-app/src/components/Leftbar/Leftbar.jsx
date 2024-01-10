@@ -1,22 +1,37 @@
 import React, { useState } from 'react'
-import Dates from '../Dates/Dates'
+import plus from '../../assets/icons/plus-sign.png'
 import './Leftbar.css'
 import Calendar from '../Calendar/Calendar'
+import Event from '../Event/Event'
 
 const Leftbar = ({ activeDate, selectedDate, setSelectedDate }) => {
-  const [events,setEvents]=useState([])
+
+  console.log(selectedDate)
+
+  const [showEvent,setShowEvent]=useState(false)
+
+  const handleCreateEvent=()=>{
+    setShowEvent(!showEvent)
+  }
 
   return (
     <div className='leftbar-container'>
-      <select className='create-btn'>
-        <option value="Create">
-          <span className='btn-text'>
-          Create
-          </span>
-          
-          </option>
-          <option value="event">Event</option>
-      </select>
+      {/* create btn */}
+      <button className='create-btn ' onClick={handleCreateEvent}>
+       <div className='btn-align'>
+       <span>
+          <img src={plus} alt="" className='btn-img'/>
+        </span>
+       <span className='btn-text'>
+        Create
+       </span>
+       </div>
+      </button>
+      {
+        showEvent && <Event selectedDate={selectedDate}/>
+      }
+      
+      {/* show calendar */}
       <div className='mini-calendar'>
         <Calendar  activeDate={activeDate} selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
       </div>

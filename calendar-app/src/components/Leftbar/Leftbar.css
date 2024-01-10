@@ -1,5 +1,6 @@
 .leftbar-container{
     margin-top: 40px;
+    z-index: 0;
 }
 .mini-calendar{
     margin-top: 20px;
@@ -9,12 +10,21 @@
     border-radius: 20px;
     box-shadow: 0px 3px 5px rgb(173, 175, 176);
     border: none;
-    padding: 10px 15px;
+    padding: 10px 20px;
 }
 .create-btn:hover{
     box-shadow: 0px 7px 10px rgb(152, 153, 153);
     background-color: rgb(242, 251, 254);
 }
+.btn-align{
+    display: flex;
+}
 .btn-text{
-    font-weight: 700;
+    font-weight: 500;
+    color: rgb(66, 61, 61);
+}
+.btn-img{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
 }

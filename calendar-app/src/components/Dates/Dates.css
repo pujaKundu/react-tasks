@@ -15,9 +15,6 @@
     background-color: rgb(2, 108, 246);
     border-radius: 50px;
 }
-.inactive-day{
-    
-}
 
 .week{
     display: grid;
@@ -29,13 +26,12 @@
     width: 300px;
 }
 .week-cell{
-    width: 150px;
-    height: 150px;
+    width: 145px;
+    height: 120px;
     border: 0.8px solid lightgray;
     padding-top: 5px;
 }
 .week-cell-left{
-    /* background-color: red; */
     margin-top:8px
 }
 .today{
@@ -47,8 +43,15 @@
     /* margin:15px auto; */
     padding: 5px 6px;
 }
+.date:hover{
+    background-color: rgb(235, 233, 233);
+    width: 8px;
+    height: 8px;
+    border-radius: 50px;
+    padding: 5px;
+}
 .text-gray{
-    color:gray
+    color:rgb(121, 119, 119)
 }
 .text-black{
     color:black;

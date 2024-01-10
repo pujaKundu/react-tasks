@@ -5,10 +5,12 @@ import Rightbar from "../Rightbar/Rightbar";
 import Calendar from "../Calendar/Calendar";
 import { format,addMonths ,subMonths} from "date-fns";
 import "./Homepage.css";
+import Event from "../Event/Event";
 
 const Homepage = () => {
   const [selectedDate,setSelectedDate]=useState(new Date())
   const [activeDate,setActiveDate]=useState(new Date())
+  const [events,setEvents]=useState([])
   const [onLeftbar,setOnLeftbar]=useState(false)
 
   const handlePrevMonth = () => {
@@ -18,6 +20,9 @@ const Homepage = () => {
   const handleNextMonth = () => {
     setActiveDate((prevDate) => addMonths(prevDate, 1));
   };
+
+  // console.log('selected date',format(selectedDate,"E"))
+
   return (
     <div className="home">
       {/* topbar */}
@@ -27,10 +32,11 @@ const Homepage = () => {
         {/* leftbar */}
         <Leftbar activeDate={activeDate} selectedDate={selectedDate} setSelectedDate={setSelectedDate} onLeftbar={onLeftbar} setOnLeftbar={setOnLeftbar}/>
         {/* calendar */}
-        <Calendar activeDate={activeDate} selectedDate={selectedDate} setSelectedDate={setSelectedDate} onLeftbar={onLeftbar} setOnLeftbar={setOnLeftbar}/>
+        <Calendar activeDate={activeDate} selectedDate={selectedDate} setSelectedDate={setSelectedDate} onLeftbar={onLeftbar} setOnLeftbar={setOnLeftbar} />
         {/* rightbar */}
         <Rightbar />
       </div>
+      
     </div>
   );
 };

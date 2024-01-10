@@ -3,9 +3,9 @@ import { format, startOfWeek, addDays } from "date-fns";
 import "./Calendar.css";
 import Dates from "../Dates/Dates";
 
-const Calendar = ({ activeDate, selectedDate, setSelectedDate,onLeftbar,setOnLeftbar }) => {
+const Calendar = ({ activeDate, selectedDate, setSelectedDate,onLeftbar,setOnLeftbar}) => {
   
-  const [weekDays, setWeekDays] = useState([]);
+  const [weekDays,setWeekDays]=useState([])
 
   useEffect(() => {
     const getWeekDaysNames = () => {
@@ -39,8 +39,7 @@ const Calendar = ({ activeDate, selectedDate, setSelectedDate,onLeftbar,setOnLef
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
         onLeftbar={onLeftbar} 
-        setOnLeftbar={setOnLeftbar}
-        weekDays={weekDays}
+        
       />
     </div>
   );
