@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaSearch } from "react-icons/fa";
@@ -7,11 +7,13 @@ import { FaRegCalendarAlt } from "react-icons/fa";
 import { IoSettings } from "react-icons/io5";
 import { FaTasks } from "react-icons/fa";
 import { CgMenuGridO } from "react-icons/cg";
-import { format } from "date-fns";
+import { format} from "date-fns";
 import logo from "../../assets/icons/google-calendar.png";
 import "./Topbar.css";
 
-const Topbar = ({ activeDate }) => {
+const Topbar = ({ activeDate ,handlePrevMonth,handleNextMonth}) => {
+  // const [currentDate, setCurrentDate] = useState(new Date());
+
   return (
     <div className="topbar">
       <div className="leftmenu">
@@ -22,8 +24,8 @@ const Topbar = ({ activeDate }) => {
 
         <span className="today-span">Today</span>
 
-        <MdArrowBackIosNew className="topbar-icon" />
-        <MdArrowForwardIos className="topbar-icon" />
+        <MdArrowBackIosNew className="topbar-icon" onClick={handlePrevMonth}/>
+        <MdArrowForwardIos className="topbar-icon" onClick={handleNextMonth}/>
 
         <h2 className="month-name">{format(activeDate, "MMMM yyyy")}</h2>
       </div>
