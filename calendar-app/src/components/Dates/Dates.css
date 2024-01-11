@@ -11,9 +11,10 @@
     margin:10px;
 }
 .selected-day{
-    color:#ffffff;
-    background-color: rgb(2, 108, 246);
+    color:#0c4fb9;
+    background-color: rgb(213, 234, 251);
     border-radius: 50px;
+    padding: 5px;
 }
 
 .week{
@@ -41,7 +42,7 @@
     width: 30px;
     height: 30px;
     /* margin:15px auto; */
-    padding: 5px 6px;
+    padding: 5px 7.5px;
 }
 
 .text-gray{

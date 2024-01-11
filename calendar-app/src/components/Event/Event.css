@@ -19,6 +19,7 @@
     border-top: 0;
     border-right: 0;
     border-bottom: 1px solid gray;
+    margin-top: 20px;
 }
 
 .date{
@@ -27,6 +28,41 @@
     margin-top: 10px;
 }
 
-.date-icon{
+.date-icon,.clock-icon{
     margin-right: 10px;
+}
+
+.time-container{
+    margin-top: 15px;
+}
+
+.time-input{
+    width: 150px;
+    padding: 10px;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+    border-bottom: 1px solid gray;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.left{
+    margin-left: 25px;
+}
+
+.save-btn{
+    margin-top: 20px;
+    background-color: rgb(7, 160, 96);
+    color: #ffffff;
+    border: none;
+}
+.save-btn:hover{
+    box-shadow: 1px 2px 5px rgb(58, 53, 53);
+    background-color: rgb(10, 124, 76);
+}
+.cancel-btn{
+    margin-left: 10px;
+    background-color: rgba(203, 18, 18, 0.793);
+    color: #ffffff;
+    border: none;
 }

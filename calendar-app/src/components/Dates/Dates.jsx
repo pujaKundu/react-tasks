@@ -8,11 +8,13 @@ import {
   endOfWeek,isFirstDayOfMonth,isToday,getMonth,getDate,isSameMonth, subDays
 } from "date-fns";
 import "./Dates.css";
+import Event from "../Event/Event";
 
-const Dates = ({ activeDate, selectedDate, setSelectedDate ,onLeftbar}) => {
+const Dates = ({ activeDate, selectedDate, setSelectedDate ,onLeftbar,events}) => {
 
   // console.log('dates',selectedDate)
   const [currentWeekDates, setCurrentWeekDates] = useState([]);
+  const [isSelected,setIsSelected]=useState(false)
 
   const today = format(new Date(), "d");
 
@@ -24,6 +26,11 @@ const Dates = ({ activeDate, selectedDate, setSelectedDate ,onLeftbar}) => {
   const startDate = startOfWeek(startOfTheSelectedMonth);
   const endDate = endOfWeek(endOfTheSelectedMonth);
 
+  const handleDateClick=(date)=>{
+    setSelectedDate(date)
+    setIsSelected(!isSelected)
+  }
+  
   useEffect(() => {
     // days of a week
     const getWeekDates = (startDate) => {
@@ -49,6 +56,7 @@ const Dates = ({ activeDate, selectedDate, setSelectedDate ,onLeftbar}) => {
 
   return (
     <div className="dates-container">
+      
       {currentWeekDates.map((week, index) => {
         // console.log('currentWeekDates',currentWeekDates)
         return(
@@ -61,9 +69,9 @@ const Dates = ({ activeDate, selectedDate, setSelectedDate ,onLeftbar}) => {
             <div
               key={idx}
               className={`${onLeftbar ===false? 'week-cell':'week-cell-left'} text-black `}
-              onClick={() => setSelectedDate(date)}
+              onClick={() => handleDateClick(date)}
             >
-              <span className={`${dateNum === today ? "today" : ""} `}>
+              <span className={`${dateNum === today ? "today" : ""} ${isSelected ?"selected-day":""}`} >
              {
               dateNum == 1 ? date : dateNum
              }

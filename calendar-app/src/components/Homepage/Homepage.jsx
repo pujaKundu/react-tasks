@@ -13,8 +13,6 @@ const Homepage = () => {
   const [events,setEvents]=useState([])
   const [onLeftbar,setOnLeftbar]=useState(false)
 
-  console.log('home',selectedDate)
-
   const handlePrevMonth = () => {
     setActiveDate((prevDate) => subMonths(prevDate, 1));
   };
@@ -32,9 +30,9 @@ const Homepage = () => {
       {/* main section */}
       <div className="container">
         {/* leftbar */}
-        <Leftbar activeDate={activeDate} selectedDate={selectedDate} setSelectedDate={setSelectedDate} onLeftbar={onLeftbar} setOnLeftbar={setOnLeftbar}/>
+        <Leftbar activeDate={activeDate} selectedDate={selectedDate} setSelectedDate={setSelectedDate} onLeftbar={onLeftbar} setOnLeftbar={setOnLeftbar} events={events} setEvents={setEvents}/>
         {/* calendar */}
-        <Calendar activeDate={activeDate} selectedDate={selectedDate} setSelectedDate={setSelectedDate} onLeftbar={onLeftbar} />
+        <Calendar activeDate={activeDate} selectedDate={selectedDate} setSelectedDate={setSelectedDate} onLeftbar={onLeftbar} events={events} />
         {/* rightbar */}
         <Rightbar />
       </div>

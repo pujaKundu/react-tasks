@@ -4,20 +4,20 @@ import './Leftbar.css'
 import Calendar from '../Calendar/Calendar'
 import Event from '../Event/Event'
 
-const Leftbar = ({ activeDate, selectedDate, setSelectedDate }) => {
+const Leftbar = ({ activeDate, selectedDate, setSelectedDate ,events,setEvents}) => {
 
   // console.log(selectedDate)
 
   const [showEvent,setShowEvent]=useState(false)
 
-  const handleCreateEvent=()=>{
+  const handleShowEvent=()=>{
     setShowEvent(!showEvent)
   }
 
   return (
     <div className='leftbar-container'>
       {/* create btn */}
-      <button className='create-btn ' onClick={handleCreateEvent}>
+      <button className='create-btn ' onClick={handleShowEvent}>
        <div className='btn-align'>
        <span>
           <img src={plus} alt="" className='btn-img'/>
@@ -28,7 +28,7 @@ const Leftbar = ({ activeDate, selectedDate, setSelectedDate }) => {
        </div>
       </button>
       {
-        showEvent && <Event selectedDate={selectedDate}/>
+        showEvent && <Event selectedDate={selectedDate} events={events} setEvents={setEvents}/>
       }
       
       {/* show calendar */}
