@@ -13,6 +13,9 @@ const Homepage = () => {
   const [events,setEvents]=useState([])
   const [onLeftbar,setOnLeftbar]=useState(false)
 
+  const [showEvent,setShowEvent]=useState(false)
+
+
   const handlePrevMonth = () => {
     setActiveDate((prevDate) => subMonths(prevDate, 1));
   };
@@ -29,10 +32,15 @@ const Homepage = () => {
       <Topbar activeDate={activeDate} handlePrevMonth={handlePrevMonth} handleNextMonth={handleNextMonth}/>
       {/* main section */}
       <div className="container">
+      
+      {
+        showEvent && <Event selectedDate={selectedDate} events={events} setEvents={setEvents} setShowEvent={setShowEvent} />
+      }
+     
         {/* leftbar */}
         <Leftbar activeDate={activeDate} selectedDate={selectedDate} setSelectedDate={setSelectedDate} onLeftbar={onLeftbar} setOnLeftbar={setOnLeftbar} events={events} setEvents={setEvents}/>
         {/* calendar */}
-        <Calendar activeDate={activeDate} selectedDate={selectedDate} setSelectedDate={setSelectedDate} onLeftbar={onLeftbar} events={events} />
+        <Calendar activeDate={activeDate} selectedDate={selectedDate} setSelectedDate={setSelectedDate} onLeftbar={onLeftbar} events={events} setEvents={setEvents} setShowEvent={setShowEvent} />
         {/* rightbar */}
         <Rightbar />
       </div>

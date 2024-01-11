@@ -3,7 +3,7 @@ import { format, startOfWeek, addDays } from "date-fns";
 import "./Calendar.css";
 import Dates from "../Dates/Dates";
 
-const Calendar = ({ activeDate, selectedDate, setSelectedDate,onLeftbar,events}) => {
+const Calendar = ({ activeDate, selectedDate, setSelectedDate,onLeftbar,events,setEvents,setShowEvent}) => {
   
   const [weekDays,setWeekDays]=useState([])
 
@@ -25,7 +25,6 @@ const Calendar = ({ activeDate, selectedDate, setSelectedDate,onLeftbar,events})
   return (
     <div className="calendar-container">
       {/* weekdays names */}
-
       <div className="week-container">
         {weekDays.map((day) => 
           <div className="day week">
@@ -40,6 +39,8 @@ const Calendar = ({ activeDate, selectedDate, setSelectedDate,onLeftbar,events})
         setSelectedDate={setSelectedDate}
         onLeftbar={onLeftbar} 
         events={events}
+        setEvents={setEvents}
+        setShowEvent={setShowEvent}
       />
     </div>
   );

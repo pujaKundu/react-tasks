@@ -3,10 +3,11 @@ import { MdDateRange } from "react-icons/md";
 import "./Event.css";
 import { format } from "date-fns";
 
-const Event = ({ selectedDate,events,setEvents }) => {
+const Event = ({ selectedDate,events,setEvents,setShowEvent }) => {
 
   // field inputs
   const [title,setTitle]=useState('')
+  const [endDate,setEndDate]=useState('')
   const [startTime,setStartTime]=useState('')
   const [endTime,setEndTime]=useState('')
 
@@ -24,6 +25,7 @@ const Event = ({ selectedDate,events,setEvents }) => {
     const newEvent ={
       title:title,
       date:selectedDateEvent,
+      endDate: endDate,
       startTime:startTime,
       endTime:endTime
     }
@@ -37,7 +39,9 @@ const Event = ({ selectedDate,events,setEvents }) => {
     setStartTime('')
     setEndTime('')
   }
-
+  const handleCloseEvent = ()=>{
+    setShowEvent(false)
+  }
   return (
     <div className="modal">
       <span className="date">
@@ -50,8 +54,11 @@ const Event = ({ selectedDate,events,setEvents }) => {
         className="title-input"
         onChange={(e) => setTitle(e.target.value)}
       />
+      <span className="date-container">
+        <label htmlFor="time">End date</label>
+        <input type="date" name="" id="time" className="time-input" onChange={(e) => setEndDate(e.target.value)} />
+      </span>
       <span className="time-container">
-       
         <label htmlFor="time">Start time</label>
         <input type="time" name="" id="time" className="time-input" onChange={(e) => setStartTime(e.target.value)} />
       </span>
@@ -62,7 +69,7 @@ const Event = ({ selectedDate,events,setEvents }) => {
       </span>
       <div className="btn-container">
       <button className="save-btn" onClick={handleCreateEvent}>Save</button>
-      <button className="cancel-btn">Cancel</button>
+      <button className="cancel-btn" onClick={handleCloseEvent}>Cancel</button>
       </div>
     </div>
   );

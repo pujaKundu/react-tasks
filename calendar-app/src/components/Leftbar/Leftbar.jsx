@@ -8,16 +8,12 @@ const Leftbar = ({ activeDate, selectedDate, setSelectedDate ,events,setEvents})
 
   // console.log(selectedDate)
 
-  const [showEvent,setShowEvent]=useState(false)
-
-  const handleShowEvent=()=>{
-    setShowEvent(!showEvent)
-  }
+  
 
   return (
     <div className='leftbar-container'>
       {/* create btn */}
-      <button className='create-btn ' onClick={handleShowEvent}>
+      <button className='create-btn '>
        <div className='btn-align'>
        <span>
           <img src={plus} alt="" className='btn-img'/>
@@ -27,10 +23,7 @@ const Leftbar = ({ activeDate, selectedDate, setSelectedDate ,events,setEvents})
        </span>
        </div>
       </button>
-      {
-        showEvent && <Event selectedDate={selectedDate} events={events} setEvents={setEvents}/>
-      }
-      
+
       {/* show calendar */}
       <div className='mini-calendar'>
         <Calendar  activeDate={activeDate} selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
