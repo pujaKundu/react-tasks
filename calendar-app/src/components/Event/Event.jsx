@@ -11,33 +11,36 @@ const Event = ({ selectedDate,events,setEvents,setShowEvent }) => {
   const [startTime,setStartTime]=useState('')
   const [endTime,setEndTime]=useState('')
 
-  console.log('event',events)
-
   const selectedDateVal = format(selectedDate, "d");
   const selectedDateName = format(selectedDate, "eeee");
   const selectedDateMonth = format(selectedDate, "MMMM");
 
-  const selectedDateEvent= format(selectedDate,"MMM d")
+  console.log(format(selectedDate, "yyyy-MM-dd"))
+
+  const [startDate, setStartDate] = useState('');
 
   const handleCreateEvent=()=>{
+    
     const allEvents=[]
 
     const newEvent ={
       title:title,
-      date:selectedDateEvent,
+      startDate:startDate,
       endDate: endDate,
       startTime:startTime,
       endTime:endTime
     }
-    // console.log(newEvent)
 
     allEvents.push(newEvent)
 
     setEvents((prevEvents)=>[...prevEvents,newEvent])
     // resets
     setTitle('')
+    setStartDate('')
+    setEndDate('')
     setStartTime('')
     setEndTime('')
+    setShowEvent(false)
   }
   const handleCloseEvent = ()=>{
     setShowEvent(false)
@@ -54,6 +57,10 @@ const Event = ({ selectedDate,events,setEvents,setShowEvent }) => {
         className="title-input"
         onChange={(e) => setTitle(e.target.value)}
       />
+      <span className="date-container">
+        <label htmlFor="">Start date</label>
+        <input type="date" name="" id="" className="time-input" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+      </span>
       <span className="date-container">
         <label htmlFor="time">End date</label>
         <input type="date" name="" id="time" className="time-input" onChange={(e) => setEndDate(e.target.value)} />

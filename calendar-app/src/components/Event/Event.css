@@ -9,7 +9,8 @@
     position: absolute;
     top: 180px;
     right: 450px;
-    box-shadow: 5px 2px 25px rgb(160, 159, 159);
+    box-shadow: 5px 5px 35px rgb(160, 159, 159);
+    
 }
 
 .title-input{

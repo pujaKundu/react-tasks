@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Event from '../Event/Event'
+import Event from "../Event/Event";
 import {
   format,
   startOfWeek,
@@ -8,6 +8,7 @@ import {
   endOfMonth,
   getYear,
   endOfWeek,
+  isWithinInterval,
   isFirstDayOfMonth,
   isToday,
   getMonth,
@@ -23,12 +24,11 @@ const Dates = ({
   setSelectedDate,
   onLeftbar,
   events,
-  setShowEvent
+  setShowEvent,
 }) => {
   // console.log('dates',selectedDate)
   const [currentWeekDates, setCurrentWeekDates] = useState([]);
   const [isSelected, setIsSelected] = useState(false);
-
 
   const today = format(new Date(), "d");
 
@@ -37,11 +37,11 @@ const Dates = ({
   const startDate = startOfWeek(startOfTheSelectedMonth);
   const endDate = endOfWeek(endOfTheSelectedMonth);
 
-  const handleShowEvent=(date)=>{
-    setShowEvent(true)
+  const handleShowEvent = (date) => {
+    setShowEvent(true);
     setSelectedDate(date);
     setIsSelected(!isSelected);
-  }
+  };
 
   useEffect(() => {
     // days of a week
@@ -68,17 +68,22 @@ const Dates = ({
 
   return (
     <div className="dates-container">
-     
-      
       {currentWeekDates.map((week, index) => {
-        // console.log('currentWeekDates',currentWeekDates)
+
         return (
           <div key={index} className="week">
             {week.map((date, idx) => {
-              const dateEvents = events?.filter(
-                (event) => format(event?.date, "MMM d") === date
-              );
+
+              const currentDate = new Date(`${activeDate.getFullYear()}-${date}`);
+
+              // console.log('cd ',currentDate)
               
+              const dateEvents = events?.filter(
+                (event) =>
+                currentDate >= new Date(event?.startDate) &&
+                currentDate <= new Date(event?.endDate)
+              );
+
               const dateNum = date.slice(4);
 
               return (
@@ -94,15 +99,13 @@ const Dates = ({
                   </span>
                   {/* show event if exists */}
                   <div className="events-container">
-                  {
-                    dateEvents?.map((event, eventIdx) => (
+                    {dateEvents?.map((event, eventIdx) => (
                       <div key={eventIdx} className="event">
                         <div className="dot"></div>
                         {event?.title}
                       </div>
                     ))}
                   </div>
-                  
                 </div>
               );
             })}
