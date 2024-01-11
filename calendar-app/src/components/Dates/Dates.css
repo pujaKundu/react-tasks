@@ -50,3 +50,6 @@
 .text-black{
     color:black;
 }
+.inactiveDay {
+    color: #9e9e9e;
+  }

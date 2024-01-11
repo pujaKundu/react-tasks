@@ -4,22 +4,20 @@ import {
   startOfWeek,
   addDays,
   startOfMonth,
-  endOfMonth,
+  endOfMonth,getYear,
   endOfWeek,isFirstDayOfMonth,isToday,getMonth,getDate,isSameMonth, subDays
 } from "date-fns";
 import "./Dates.css";
 
-// list of months
-
-// const allMonths = [
-//   "Jan","Feb","Mar","Apr","May","Jun","Jul","Sep","Oct","Nov","Dec"
-// ]
-
 const Dates = ({ activeDate, selectedDate, setSelectedDate ,onLeftbar}) => {
 
+  // console.log('dates',selectedDate)
   const [currentWeekDates, setCurrentWeekDates] = useState([]);
 
   const today = format(new Date(), "d");
+
+  const currentMonth = getMonth(activeDate);
+  const currentYear = getYear(activeDate);
 
   const startOfTheSelectedMonth = startOfMonth(activeDate);
   const endOfTheSelectedMonth = endOfMonth(activeDate);
@@ -31,9 +29,8 @@ const Dates = ({ activeDate, selectedDate, setSelectedDate ,onLeftbar}) => {
     const getWeekDates = (startDate) => {
       let currentDate = startDate;
       const week = [];
-
       for (let d = 0; d < 7; d++) {
-        week.push(format(currentDate, "d"));
+        week.push(format(currentDate, "MMM d"));
         currentDate = addDays(currentDate, 1);
       }
       return week;
@@ -41,8 +38,6 @@ const Dates = ({ activeDate, selectedDate, setSelectedDate ,onLeftbar}) => {
 
     const allWeeks = [];
     let currentDate = startDate;
-
-    // console.log('all week',allWeeks)
 
     while (allWeeks.length < 5) {
       allWeeks.push(getWeekDates(currentDate));
@@ -52,41 +47,31 @@ const Dates = ({ activeDate, selectedDate, setSelectedDate ,onLeftbar}) => {
     setCurrentWeekDates(allWeeks);
   }, [activeDate]);
 
-  const isFirstDay = isFirstDayOfMonth(activeDate);
-  
   return (
     <div className="dates-container">
-    
-      {currentWeekDates.map((week, index) => (
+      {currentWeekDates.map((week, index) => {
+        // console.log('currentWeekDates',currentWeekDates)
+        return(
         <div key={index} className="week" >
-          {week.map((date, idx) => {
+          {week.map((date, idx) => { 
 
-            
-            const selectedDateVal = format(selectedDate,"d")
+          const dateNum = date.slice(4)
 
-            const startDateNum = parseInt(format(startOfTheSelectedMonth,"d"))
-            const endDateNum = parseInt(format(endOfTheSelectedMonth,"d"))
-            
-            const currentDate = addDays(activeDate, date - 1);
-            
-            const isCurrentMonth = getMonth(currentDate) === getMonth(activeDate)
-  
             return(
             <div
               key={idx}
-              className={`${onLeftbar ===false? 'week-cell':'week-cell-left'}  ${isCurrentMonth ? "text-black" : "text-gray"} `}
+              className={`${onLeftbar ===false? 'week-cell':'week-cell-left'} text-black `}
               onClick={() => setSelectedDate(date)}
             >
-              <span className={`${date === today ? "today" : ""}`}>
-                {date}
-              </span>
-            {/* {
-              date === '1' ? `${format(startOfMonth(activeDateNum),"MMM")} ${date}`:date
-            } */}
-            </div>
+              <span className={`${dateNum === today ? "today" : ""} `}>
+             {
+              dateNum == 1 ? date : dateNum
+             }
+            </span>
+            </div> 
           )})}
         </div>
-      ))}
+      )})}
     </div>
   );
 };

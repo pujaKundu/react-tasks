@@ -3,7 +3,7 @@ import { format, startOfWeek, addDays } from "date-fns";
 import "./Calendar.css";
 import Dates from "../Dates/Dates";
 
-const Calendar = ({ activeDate, selectedDate, setSelectedDate,onLeftbar,setOnLeftbar}) => {
+const Calendar = ({ activeDate, selectedDate, setSelectedDate,onLeftbar}) => {
   
   const [weekDays,setWeekDays]=useState([])
 
@@ -15,7 +15,7 @@ const Calendar = ({ activeDate, selectedDate, setSelectedDate,onLeftbar,setOnLef
       for (let d = 0; d < 7; d++) {
         daysOfWeek.push(
           format(addDays(weekFirstDay, d), "E")
-        );
+        )
       }
       setWeekDays(daysOfWeek);
     };
