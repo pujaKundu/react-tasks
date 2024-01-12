@@ -1,0 +1,5 @@
+.information-container{
+    display: grid;
+    grid-template-columns: 300px 100px 100px;
+    background-color: azure;
+}
