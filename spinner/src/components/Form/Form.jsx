@@ -1,26 +1,20 @@
 import React, { useState } from "react";
+import { useSpinnerState, useUserState } from "../../utils/statesUtils";
 import "./Form.css";
 
-const Form = ({setIsSpinnerOpen}) => {
+const Form = ({color,setColor,setDiscount,setDiscountType,setIsSpinnerOpen}) => {
 
-  const [color, setColor] = useState("#ffee99");
-
-  const handleColorChange = (event) => {
-    const newColor = event.target.value;
-    setColor(newColor);
+  const handleSpinnerOpen = (event) => {
+    event.preventDefault();
+    setIsSpinnerOpen(true);
   };
-
-  const handleSpinnerOpen = (event)=>{
-    event.preventDefault()
-    setIsSpinnerOpen(true)
-  }
 
   return (
     <>
       <form action="" className="spinner-form">
         <div className="spinner-inputs">
-          <input type="text" placeholder="Enter discount" className="input"/>
-          <select name="" id="" className="select">
+          <input type="text" placeholder="Enter discount" className="input" onChange={(event)=>setDiscount(event.target.value)} />
+          <select name="" id="" className="select" onChange={(event)=>setDiscountType(event.target.value)}>
             <option value="percentage">%</option>
             <option value="fixed">Fixed</option>
           </select>
@@ -29,11 +23,12 @@ const Form = ({setIsSpinnerOpen}) => {
             id="colorPicker"
             value={color}
             className="color-picker"
-            onChange={handleColorChange}
+            onChange={(event)=>setColor(event.target.value)}
           />
-          
         </div>
-        <button className="spin-btn" onClick={()=>handleSpinnerOpen(event)}>Spin</button>
+        <button className="spin-btn" onClick={() => handleSpinnerOpen(event)}>
+          Spin
+        </button>
       </form>
     </>
   );

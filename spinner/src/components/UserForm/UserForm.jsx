@@ -1,8 +1,12 @@
 import React from 'react'
 import { IoMdClose } from "react-icons/io";
+import {useSpinnerState,useUserState} from '../../utils/statesUtils'
 import './UserForm.css'
 
 const UserForm = ({setIsSpinnerOpen}) => {
+
+  const {name,setName,email,setEmail}=useUserState()
+
   return (
     <div className='form-container'>
       <form action="" className='form'>
