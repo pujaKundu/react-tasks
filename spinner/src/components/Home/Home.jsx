@@ -36,7 +36,9 @@ const Home = () => {
     addUserInformation(newUserInfo)
   }
 
-  console.log(`color: ${color}, discount: ${discount}, type: ${discountType}`)
+  console.log('user info', userInformation)
+
+  console.log(`color: ${color}, discount: ${discount}, type: ${discountType} name:${name} email:${email}`)
 
   return (
     <div className="container">
@@ -47,9 +49,9 @@ const Home = () => {
         setDiscountType={setDiscountType}
         setIsSpinnerOpen={setIsSpinnerOpen}
       />
-      <UserInformation />
+      <UserInformation userInformation={userInformation}/>
       <div className="spinner-container">
-        {isSpinnerOpen && <UserForm setIsSpinnerOpen={setIsSpinnerOpen} />}
+        {isSpinnerOpen && <UserForm setIsSpinnerOpen={setIsSpinnerOpen} setName={setName} setEmail={setEmail} handleAddUser={handleAddUser} />}
       </div>
     </div>
   );

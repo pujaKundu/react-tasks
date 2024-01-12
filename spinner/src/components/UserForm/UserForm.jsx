@@ -1,11 +1,8 @@
 import React from 'react'
 import { IoMdClose } from "react-icons/io";
-import {useSpinnerState,useUserState} from '../../utils/statesUtils'
 import './UserForm.css'
 
-const UserForm = ({setIsSpinnerOpen}) => {
-
-  const {name,setName,email,setEmail}=useUserState()
+const UserForm = ({setIsSpinnerOpen,setName,setEmail,handleAddUser}) => {
 
   return (
     <div className='form-container'>
@@ -13,9 +10,9 @@ const UserForm = ({setIsSpinnerOpen}) => {
         <span className='close' onClick={()=>setIsSpinnerOpen(false)}>
             <IoMdClose />
         </span>
-        <input type="text" placeholder='Enter your name' />
-        <input type="email" placeholder='Enter yout email' />
-        <button className='try-btn'>Try you luck</button>
+        <input type="text" placeholder='Enter your name' onChange={(event)=>setName(event.target.value)} />
+        <input type="email" placeholder='Enter yout email' onChange={(event)=>setEmail(event.target.value)} />
+        <button className='try-btn' onClick={handleAddUser}>Try you luck</button>
       </form>
     </div>
   )
