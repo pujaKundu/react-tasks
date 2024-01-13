@@ -28,16 +28,13 @@ const Dates = ({
   events,
   setShowEvent,
 }) => {
-  // console.log('dates',selectedDate)
   const [currentWeekDates, setCurrentWeekDates] = useState([]);
   const [isSelected, setIsSelected] = useState(false);
 
   const today = format(new Date(), "d");
 
   const startOfTheSelectedMonth = startOfMonth(activeDate);
-  const endOfTheSelectedMonth = endOfMonth(activeDate);
   const startDate = startOfWeek(startOfTheSelectedMonth);
-  const endDate = endOfWeek(endOfTheSelectedMonth);
 
   const handleShowEvent = (date) => {
     setShowEvent(true);
@@ -46,7 +43,6 @@ const Dates = ({
   };
 
   useEffect(() => {
-    // days of a week
     const getWeekDates = (startDate) => {
       let currentDate = startDate;
       const week = [];
@@ -71,20 +67,30 @@ const Dates = ({
   return (
     <div className="dates-container">
       {currentWeekDates.map((week, index) => {
-
         return (
           <div key={index} className="week">
             {week.map((date, idx) => {
-
-              const currentDate = new Date(`${activeDate.getFullYear()}-${date}`);
-
-              // console.log('cd ',currentDate)
-              
-              const dateEvents = events?.filter(
-                (event) =>
-                currentDate >= new Date(event?.startDate) &&
-                currentDate <= new Date(event?.endDate)
+              const currentDate = new Date(
+                `${activeDate.getFullYear()}-${date}`
               );
+
+              console.log("cd ", currentDate);
+
+              const eventsWithinDateRange = [];
+
+              const dateEvents = events?.filter((event) => {
+                const eventStartDate = new Date(event?.startDate);
+                const eventEndDate = new Date(event?.endDate);
+
+                // Set hours, minutes, seconds, and milliseconds to 0 for accurate date comparison
+                eventStartDate.setHours(0, 0, 0, 0);
+                eventEndDate.setHours(0, 0, 0, 0);
+                currentDate.setHours(0, 0, 0, 0);
+
+                return (
+                  currentDate >= eventStartDate && currentDate <= eventEndDate
+                );
+              });
 
               const dateNum = date.slice(4);
 
