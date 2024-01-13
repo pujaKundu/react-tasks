@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { format, startOfWeek, addDays } from "date-fns";
 import "./Calendar.css";
 import Dates from "../Dates/Dates";
@@ -24,23 +24,17 @@ const Calendar = ({ activeDate, selectedDate, setSelectedDate,onLeftbar,events,s
 
   return (
     <div className="calendar-container">
-      {/* weekdays names */}
-      <div className="week-container">
-        {weekDays.map((day) => 
-          <div className="day week">
-            <span>{day}</span>
-            </div>
-        )}
-      </div>
-      {/* dates */}
+     
+
       <Dates
         activeDate={activeDate}
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
-        onLeftbar={onLeftbar} 
+        onLeftbar={onLeftbar}
         events={events}
         setEvents={setEvents}
         setShowEvent={setShowEvent}
+        weekDays={weekDays}
       />
     </div>
   );

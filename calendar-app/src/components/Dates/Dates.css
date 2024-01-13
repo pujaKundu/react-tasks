@@ -7,14 +7,7 @@
     align-items: center;
     justify-content: center;
 }
-.day{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    margin:10px;
-}
+
 .selected-day{
     color:#0c4fb9;
     background-color: rgb(213, 234, 251);
@@ -32,13 +25,20 @@
     width: 300px;
 }
 .week-cell{
-    width: 145px;
-    height: 120px;
+    width: 140px;
+    height: 80px;
     border: 0.8px solid lightgray;
     padding-top: 5px;
 }
 .week-cell-left{
     margin-top:8px
+}
+.week-days-container{
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+}
+.day{
+    color: #757171;
 }
 .date-click{
     cursor: pointer;

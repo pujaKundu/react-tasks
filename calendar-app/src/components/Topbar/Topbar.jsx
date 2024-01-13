@@ -1,4 +1,3 @@
-import React,{useState} from "react";
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FaSearch } from "react-icons/fa";
@@ -12,7 +11,6 @@ import logo from "../../assets/icons/google-calendar.png";
 import "./Topbar.css";
 
 const Topbar = ({ activeDate ,handlePrevMonth,handleNextMonth}) => {
-  // const [currentDate, setCurrentDate] = useState(new Date());
 
   return (
     <div className="topbar">

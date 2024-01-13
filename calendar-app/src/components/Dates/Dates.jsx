@@ -26,7 +26,7 @@ const Dates = ({
   setSelectedDate,
   onLeftbar,
   events,
-  setShowEvent,
+  setShowEvent,weekDays
 }) => {
   const [currentWeekDates, setCurrentWeekDates] = useState([]);
   const [isSelected, setIsSelected] = useState(false);
@@ -66,6 +66,13 @@ const Dates = ({
 
   return (
     <div className="dates-container">
+      <div className="week-days-container">
+        {weekDays.map((day, index) => (
+          <div key={index} className="day">
+            <span>{day}</span>
+          </div>
+        ))}
+      </div>
       {currentWeekDates.map((week, index) => {
         return (
           <div key={index} className="week">
@@ -73,7 +80,7 @@ const Dates = ({
               const currentDate = new Date(
                 `${activeDate.getFullYear()}-${date}`
               );
-               
+
               const dateEvents = events?.filter((event) => {
                 const eventStartDate = new Date(event?.startDate);
                 const eventEndDate = new Date(event?.endDate);
@@ -92,8 +99,8 @@ const Dates = ({
               });
 
               const dateNum = date.slice(4, 6);
-              
-              const firstDate = date.slice(0,5)
+
+              const firstDate = date.slice(0, 5);
 
               return (
                 <div
@@ -106,7 +113,7 @@ const Dates = ({
                   <span className={`${dateNum === today ? "today" : ""}  `}>
                     {dateNum == 1 ? firstDate : dateNum}
                   </span>
-                  
+
                   <div className="events-container">
                     {dateEvents?.map((event, eventIdx) => (
                       <div key={eventIdx} className="event">
