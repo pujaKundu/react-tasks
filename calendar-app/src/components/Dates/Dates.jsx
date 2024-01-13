@@ -47,7 +47,7 @@ const Dates = ({
       let currentDate = startDate;
       const week = [];
       for (let d = 0; d < 7; d++) {
-        week.push(format(currentDate, "MMM d"));
+        week.push(format(currentDate, "MMM d yyyy"));
         currentDate = addDays(currentDate, 1);
       }
       return week;
@@ -73,26 +73,27 @@ const Dates = ({
               const currentDate = new Date(
                 `${activeDate.getFullYear()}-${date}`
               );
-
-              console.log("cd ", currentDate);
-
-              const eventsWithinDateRange = [];
-
+               
               const dateEvents = events?.filter((event) => {
                 const eventStartDate = new Date(event?.startDate);
                 const eventEndDate = new Date(event?.endDate);
 
-                // Set hours, minutes, seconds, and milliseconds to 0 for accurate date comparison
                 eventStartDate.setHours(0, 0, 0, 0);
                 eventEndDate.setHours(0, 0, 0, 0);
                 currentDate.setHours(0, 0, 0, 0);
+
+                if (!event?.endDate) {
+                  return currentDate.getTime() === eventStartDate.getTime();
+                }
 
                 return (
                   currentDate >= eventStartDate && currentDate <= eventEndDate
                 );
               });
 
-              const dateNum = date.slice(4);
+              const dateNum = date.slice(4, 6);
+              
+              const firstDate = date.slice(0,5)
 
               return (
                 <div
@@ -103,9 +104,9 @@ const Dates = ({
                   onClick={() => handleShowEvent(date)}
                 >
                   <span className={`${dateNum === today ? "today" : ""}  `}>
-                    {dateNum == 1 ? date : dateNum}
+                    {dateNum == 1 ? firstDate : dateNum}
                   </span>
-                  {/* show event if exists */}
+                  
                   <div className="events-container">
                     {dateEvents?.map((event, eventIdx) => (
                       <div key={eventIdx} className="event">

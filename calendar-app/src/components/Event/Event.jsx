@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { MdDateRange } from "react-icons/md";
 import "./Event.css";
-import { format } from "date-fns";
+import { format, getTime } from "date-fns";
 
 const Event = ({ selectedDate,events,setEvents,setShowEvent }) => {
 
-  // field inputs
   const [title,setTitle]=useState('')
   const [endDate,setEndDate]=useState('')
   const [startTime,setStartTime]=useState('')
@@ -15,9 +14,7 @@ const Event = ({ selectedDate,events,setEvents,setShowEvent }) => {
   const selectedDateName = format(selectedDate, "eeee");
   const selectedDateMonth = format(selectedDate, "MMMM");
 
-  console.log(format(selectedDate, "yyyy-MM-dd"))
-
-  const [startDate, setStartDate] = useState('');
+  const [startDate, setStartDate] = useState(format(selectedDate, "yyyy-MM-dd"));
 
   const handleCreateEvent=()=>{
     
@@ -32,9 +29,8 @@ const Event = ({ selectedDate,events,setEvents,setShowEvent }) => {
     }
 
     allEvents.push(newEvent)
-
     setEvents((prevEvents)=>[...prevEvents,newEvent])
-    // resets
+  
     setTitle('')
     setStartDate('')
     setEndDate('')
@@ -55,11 +51,12 @@ const Event = ({ selectedDate,events,setEvents,setShowEvent }) => {
         type="text"
         placeholder="Add Event Title"
         className="title-input"
+        required
         onChange={(e) => setTitle(e.target.value)}
       />
       <span className="date-container">
         <label htmlFor="">Start date</label>
-        <input type="date" name="" id="" className="time-input" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+        <input type="date" name="" id="" className="time-input" value={startDate} required onChange={(e) => setStartDate(e.target.value)} />
       </span>
       <span className="date-container">
         <label htmlFor="time">End date</label>
