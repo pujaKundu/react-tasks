@@ -1,22 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from "react";
-import Event from "../Event/Event";
 import {
   format,
   startOfWeek,
   addDays,
   startOfMonth,
-  endOfMonth,
-  getYear,
-  endOfWeek,
-  isWithinInterval,
-  isFirstDayOfMonth,
-  isToday,
-  getMonth,
-  getDate,
   isSameMonth,
-  subDays,
 } from "date-fns";
 import "./Dates.css";
 
@@ -26,13 +16,13 @@ const Dates = ({
   setSelectedDate,
   onLeftbar,
   events,
-  setShowEvent,weekDays
+  setShowEvent,
+  weekDays,
 }) => {
   const [currentWeekDates, setCurrentWeekDates] = useState([]);
   const [isSelected, setIsSelected] = useState(false);
 
   const today = format(new Date(), "d");
-
   const startOfTheSelectedMonth = startOfMonth(activeDate);
   const startDate = startOfWeek(startOfTheSelectedMonth);
 
@@ -107,10 +97,16 @@ const Dates = ({
                   key={idx}
                   className={`${
                     onLeftbar === false ? "week-cell" : "week-cell-left"
-                  } text-black date-click`}
+                  } text-black`}
                   onClick={() => handleShowEvent(date)}
                 >
-                  <span className={`${dateNum === today ? "today" : ""}  `}>
+                  <span
+                    className={`${dateNum === today ? "today" : ""} ${
+                      isSameMonth(currentDate, activeDate)
+                        ? "text-black"
+                        : "text-gray"
+                    } `}
+                  >
                     {dateNum == 1 ? firstDate : dateNum}
                   </span>
 

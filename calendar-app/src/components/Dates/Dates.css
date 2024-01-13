@@ -7,7 +7,6 @@
     align-items: center;
     justify-content: center;
 }
-
 .selected-day{
     color:#0c4fb9;
     background-color: rgb(213, 234, 251);
@@ -22,13 +21,20 @@
 .week-left{
     display: grid;
     grid-template-columns: repeat(7,1fr);
-    width: 300px;
 }
 .week-cell{
-    width: 140px;
-    height: 80px;
-    border: 0.8px solid lightgray;
+    width: 135px;
+    height: 85px;
     padding-top: 5px;
+    background-color: rgb(247, 251, 253);
+    border-radius: 5px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+.week-cell:hover{
+    background-color:  rgb(233, 247, 252);
+    border-radius: 10px;
 }
 .week-cell-left{
     margin-top:8px
@@ -38,23 +44,14 @@
     grid-template-columns: repeat(7,1fr);
 }
 .day{
-    color: #757171;
+    color: #0f2e94;
 }
-.date-click{
-    cursor: pointer;
-}
-.date-click:hover{
-    background-color: rgb(244, 242, 242);
-    border-radius: 10px;
-}
+
 .today{
-    background-color: rgb(22, 94, 249);
+    background-color: rgb(140, 11, 151);
     border-radius: 50px;
     color:#fff !important;
-    width: 30px;
-    height: 30px;
-    /* margin:15px auto; */
-    padding: 5px 7.5px;
+    padding: 5px 6px;
 }
 
 .text-gray{

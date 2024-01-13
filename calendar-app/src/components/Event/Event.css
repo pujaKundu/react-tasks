@@ -7,10 +7,9 @@
     padding: 30px;
     background-color: #ffffff;
     position: absolute;
-    top: 180px;
+    top: 80px;
     right: 450px;
-    box-shadow: 5px 5px 35px rgb(160, 159, 159);
-    
+    box-shadow: 5px 5px 35px rgb(160, 159, 159);  
 }
 
 .title-input{

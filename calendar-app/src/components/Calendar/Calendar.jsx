@@ -24,7 +24,6 @@ const Calendar = ({ activeDate, selectedDate, setSelectedDate,onLeftbar,events,s
 
   return (
     <div className="calendar-container">
-     
 
       <Dates
         activeDate={activeDate}

@@ -20,7 +20,6 @@ useEffect(() => {
   };
   getWeekDaysNames();
 
-  console.log(weekDays);
 }, [activeDate]);
   return (
     <div className="leftbar-container">

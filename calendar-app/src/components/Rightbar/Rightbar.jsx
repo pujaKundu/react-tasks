@@ -1,4 +1,3 @@
-import React from 'react'
 import people from '../../assets/icons/group.png'
 import check from '../../assets/icons/checkmark.png'
 import google from '../../assets/icons/google.png'
